@@ -1,0 +1,31 @@
+encoding utf-8
+symbol line
+name free_stonework
+name-ru ненагруженная_кладка
+th_name u:freestonework
+group border
+color 0x00cc00 0xff
+width 1
+csurvey 5 4 1 1
+effect
+  moveTo 0 3
+  lineTo 0 4
+  lineTo 12 4
+  lineTo 12 3
+  lineTo 10 3
+  lineTo 10 -3
+  lineTo 12 -3
+  lineTo 12 -4
+  lineTo 0 -4
+  lineTo 0 -3
+  lineTo 3 -3
+  lineTo 3 2
+  lineTo 3 3
+  lineTo 3 -3
+  lineTo 9 -3
+  lineTo 9 3
+  lineTo 3 3
+  lineTo 0 3
+  lineTo 0 4 
+endeffect
+endsymbol

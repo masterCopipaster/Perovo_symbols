@@ -1,0 +1,20 @@
+encoding utf-8
+symbol point
+name bones
+name-pt ossos
+name-ru кость
+th_name bones
+group paleo
+orientation no
+color 0xc2c2c2
+csurvey 6 6 80
+path
+  moveTo -4 -2
+  lineTo 4 -2
+  cubicTo 5 -6 10 -2 6 0
+  cubicTo 10 2 5 6 4 2
+  lineTo -4 2
+  cubicTo -5 6 -10 2 -6 0
+  cubicTo -10 -2 -5 -6 -4 -2
+endpath
+endsymbol

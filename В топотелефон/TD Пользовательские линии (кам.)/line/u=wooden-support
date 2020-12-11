@@ -1,0 +1,17 @@
+encoding utf-8
+symbol line
+name wooden_support
+name-ru крепь_деревянная
+th_name u:woodensupport
+color 0x804000 0xff
+width 1
+style straight
+csurvey 5 4 1 1
+effect
+  moveTo 0 2
+  lineTo 10 2
+  lineTo 10 -2
+  lineTo 0 -2
+  lineTo 0 2
+endeffect
+endsymbol

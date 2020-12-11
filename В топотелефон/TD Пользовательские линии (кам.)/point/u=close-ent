@@ -1,0 +1,35 @@
+encoding utf-8
+symbol point
+name close_enterance
+name-ru вход_закрытый
+th_name u:closeent
+group entrance
+color 0xff3333
+csurvey 6 6 80
+path
+  moveTo -5  2
+  lineTo -3  2
+  lineTo -3 -2
+  lineTo  3 -2
+  lineTo  3  2
+  lineTo  5  2
+  moveTo -3  1.5
+  lineTo 2.25 -2
+  moveTo -3 1
+  lineTo 1.5 -2
+  moveTo -3 0.5
+  lineTo 0.75 -2
+  moveTo -3 0
+  lineTo 0 -2
+  moveTo -3 -0.5
+  lineTo -0.75 -2
+  moveTo -3 -1
+  lineTo -1.5 -2
+  moveTo -3 -1.5
+  lineTo -2.25 -2
+  moveTo -4.5 3
+  lineTo 4.5 -3
+  moveTo -4.5 -3
+  lineTo 4.5 3
+endpath
+endsymbol

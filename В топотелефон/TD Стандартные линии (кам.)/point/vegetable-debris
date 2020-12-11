@@ -1,0 +1,25 @@
+encoding utf-8
+symbol point
+name vegetable-debris
+name-pt restos_vegetais
+name-ru остатки_растительности
+name-fr débris_végétaux
+name-sk zvyšky-rastlín
+name-ro resturi-vegetale
+name-de Vegetationsresten
+th_name vegetable-debris
+group vegetable
+orientation no
+color 0xffcc99
+csurvey 6 6 80
+path
+  moveTo -6 3
+  lineTo 7 2
+  moveTo -7 -2
+  lineTo 6 -3
+  moveTo -2 -6
+  lineTo -3 7
+  moveTo 3 -7
+  lineTo 2 6
+endpath
+endsymbol

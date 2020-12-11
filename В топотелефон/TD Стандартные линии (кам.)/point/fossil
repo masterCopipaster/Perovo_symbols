@@ -1,0 +1,25 @@
+encoding utf-8
+symbol point
+name fossil
+name-pt fóssil
+name-es fósil
+name-it fossile
+name-ru окаменелость
+name-fr fossile
+name-ro fosil
+name-de Fossil
+th_name u:fossil
+group paleo
+color 0x33ff66
+csurvey 0 0 0
+path
+  moveTo 9 0
+  lineTo -9 0
+  moveTo 0 9
+  lineTo 0 -9
+  moveTo 6 -6
+  lineTo -6 6
+  moveTo 6 6
+  lineTo -6 -6
+endpath
+endsymbol

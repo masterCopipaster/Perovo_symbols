@@ -1,0 +1,32 @@
+encoding utf-8
+symbol point
+name stone-support
+name-ru крепь_из_кладки
+th_name u:stonesupport
+group user
+orientation yes
+color 0xff0000
+csurvey 6 6 80
+path
+  moveTo 1 1
+  lineTo 4 1
+  lineTo 4 4
+  lineTo 1 4
+  lineTo 1 1
+  moveTo -1 1
+  lineTo -4 1
+  lineTo -4 4
+  lineTo -1 4
+  lineTo -1 1
+  moveTo 1 -1
+  lineTo 4 -1
+  lineTo 4 -4
+  lineTo 1 -4
+  lineTo 1 -1
+  moveTo -1 -1
+  lineTo -4 -1
+  lineTo -4 -4
+  lineTo -1 -4
+  lineTo -1 -1
+endpath
+endsymbol

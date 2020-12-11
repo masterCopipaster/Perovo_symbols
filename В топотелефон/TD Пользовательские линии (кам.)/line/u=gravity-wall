@@ -1,0 +1,27 @@
+encoding utf-8
+symbol line
+name secondary_wall
+name-ru вторичная_стена
+th_name u:gravitywall -outline out
+group wall
+color 0xff0000 0xff
+width 1
+csurvey 5 4 1 1
+effect
+  moveTo 0 -1
+  lineTo 10 -1
+  lineTo 10 0
+  lineTo 0 0
+  lineTo 0 -1
+  moveTo 2 3
+  lineTo 8 3
+  lineTo 8 4
+  lineTo 2 4
+  lineTo 2 3
+  moveTo 2 -4
+  lineTo 8 -4
+  lineTo 8 -5
+  lineTo 2 -5
+  lineTo 2 -4
+endeffect
+endsymbol

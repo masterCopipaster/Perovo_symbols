@@ -1,0 +1,31 @@
+encoding utf-8
+symbol point
+name dig
+name-cn 挖掘痕迹
+name-es excavación
+name-pt desobstrução
+name-it scavo
+name-fr désobstruction
+name-de Grabung
+name-fa حفره
+name-ru раскоп
+name-bg изкоп
+name-ua розкоп
+name-hu bontás
+name-sk kopať
+name-ro săpătură
+th_name dig
+orientation no
+color 0xff6666
+csurvey 6 6 80
+path
+  moveTo -5 -2
+  lineTo -1 -6
+  moveTo -3 -4
+  lineTo 4 3
+  moveTo 5 -2
+  lineTo 1 -6
+  moveTo 3 -4
+  lineTo -4 3
+endpath
+endsymbol

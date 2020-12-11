@@ -1,0 +1,23 @@
+encoding utf-8
+symbol line
+name wall_presumed
+name-cn 推断的洞壁
+name-es contorno_estimado
+name-pt parede_presumida
+name-it parete_stimata
+name-fr supposé
+name-de Vermutetete_Wand
+name-ru стена_предположительно
+name-bg предполагаема
+name-ua ймовірний
+name-fa احتمال_داشتن
+name-hu fal_feltételezett
+name-sk odhadovaná_stena
+name-ro presupus
+th_name wall:presumed
+group wall
+color 0xff0000 0xff
+width 1
+csurvey 5 4 1 8
+dash 15 5
+endsymbol

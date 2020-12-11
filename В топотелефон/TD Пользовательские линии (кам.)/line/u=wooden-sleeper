@@ -1,0 +1,23 @@
+encoding utf-8
+symbol line
+name wooden_sleeper
+name-ru шпала_деревянная
+th_name u:woodensleeper
+group trail
+color 0x804000 0xff
+width 1
+style straight
+csurvey 5 4 1 1
+effect
+  moveTo 0 2
+  lineTo 10 2
+  lineTo 10 3
+  lineTo 0 3
+  lineTo 0 2
+  moveTo 0 -2
+  lineTo 10 -2
+  lineTo 10 -3
+  lineTo 0 -3
+  lineTo 0 -2
+endeffect
+endsymbol

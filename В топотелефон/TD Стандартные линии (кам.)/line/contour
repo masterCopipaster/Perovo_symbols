@@ -1,0 +1,22 @@
+encoding utf-8
+symbol line
+name contour
+name-cn 等高线
+name-es curvas_de_nivel
+name-pt curva_de_nível
+name-it curva_di_livello
+name-fr courbe_de_niveau
+name-de Höhenlinie
+name-ru контур
+name-bg контур
+name-ua контур
+name-fa حد_فاصل
+name-hu körvonal
+name-sk obrys
+name-ro curbă-de-nivel
+th_name contour
+group border
+color 0x33cc66 0xff
+width 1
+csurvey 2 1 3 2
+endsymbol

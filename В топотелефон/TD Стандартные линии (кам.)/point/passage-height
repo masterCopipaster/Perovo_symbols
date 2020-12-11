@@ -1,0 +1,24 @@
+encoding utf-8
+symbol point
+name passage-height
+name-pt altura_do_conduto
+name-es altura_de_paso
+name-ru высота-хода
+name-fr hauteur_de_passage
+name-ro înălțime-pasaj
+name-de Ganghöhe
+th_name passage-height
+orientation no
+has_value yes
+color 0xcccccc
+csurvey 6 6 80
+path
+  moveTo -4 -3
+  lineTo  0 -7
+  lineTo  4 -3
+  moveTo  0 -7
+  lineTo  0  5
+  moveTo -3  5
+  lineTo  3  5
+endpath
+endsymbol

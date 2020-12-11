@@ -1,0 +1,22 @@
+encoding utf-8
+symbol line
+name border
+name-cn 边界
+name-es borde
+name-pt borda
+name-it bordo
+name-fr bordure
+name-de Begrenzung
+name-ru граница
+name-bg граница
+name-ua границя
+name-fa مرز
+name-hu határvonal
+name-sk hranica
+name-ro margine
+th_name border
+group border
+color 0x00cc00 0xff
+width 1
+csurvey 2 1 3 2
+endsymbol

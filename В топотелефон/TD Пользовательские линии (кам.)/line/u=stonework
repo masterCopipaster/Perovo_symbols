@@ -1,0 +1,38 @@
+encoding utf-8
+symbol line
+name stonework
+name-it muro_a_secco
+name-es muro_de_yeso
+name-pt parede_seca
+name-ru каменная_кладка
+name-fr paroi-sèche
+name-sk suchý_múrik
+name-ro perete_sec
+name-de Trockenmauer
+th_name u:stonework
+group wall
+color 0xff0000 0xff
+width 1
+csurvey 5 4 1 1
+effect
+  moveTo 0 3
+  lineTo 0 4
+  lineTo 12 4
+  lineTo 12 3
+  lineTo 10 3
+  lineTo 10 -3
+  lineTo 12 -3
+  lineTo 12 -4
+  lineTo 0 -4
+  lineTo 0 -3
+  lineTo 3 -3
+  lineTo 3 2
+  lineTo 3 3
+  lineTo 3 -3
+  lineTo 9 -3
+  lineTo 9 3
+  lineTo 3 3
+  lineTo 0 3
+  lineTo 0 4 
+endeffect
+endsymbol

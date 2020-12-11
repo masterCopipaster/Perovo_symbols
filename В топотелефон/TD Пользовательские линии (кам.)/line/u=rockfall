@@ -1,0 +1,18 @@
+encoding utf-8
+symbol line
+name wall_rockfall
+name-ru стена_oбвальная
+th_name u:rockfall -outline out
+group wall
+color 0xff0000 0xff
+csurvey 5 4 1 1
+width 1
+effect
+  moveTo 0 -3
+  lineTo 3 2
+  lineTo 6 -3
+  lineTo 6 -2
+  lineTo 3 3
+  lineTo 0 -2
+endeffect
+endsymbol

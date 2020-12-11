@@ -1,0 +1,32 @@
+encoding utf-8
+symbol line
+name free_of_work
+name-ru покладка
+th_name u:freeofwork
+group border
+color 0xfc0fc0 0xff
+width 1
+csurvey 5 4 1 1
+effect
+  moveTo 0 0
+  lineTo -3 2
+  lineTo -3 4
+  lineTo -2 5
+  lineTo 0 5
+  lineTo 2 2
+  lineTo 7 2
+  lineTo 8 3
+  lineTo 10 3
+  lineTo 12 1
+  lineTo 12 -1
+  lineTo 10 -3
+  lineTo 8 -3
+  lineTo 7 -2
+  lineTo 2 -2
+  lineTo 0 -5
+  lineTo -2 -5
+  lineTo -3 -4
+  lineTo -3 -2 
+  lineTo 0 0
+endeffect
+endsymbol

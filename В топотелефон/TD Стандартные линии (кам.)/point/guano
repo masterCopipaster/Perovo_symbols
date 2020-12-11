@@ -1,0 +1,29 @@
+encoding utf-8
+symbol point
+name guano
+name-cn 粪石
+name-es guano
+name-pt guano
+name-it guano
+name-fr guano
+name-fa گودی
+name-de Guano
+name-ru гуано
+name-bg гуано
+name-ua гуано
+name-hu guano
+name-sk guano
+name-ro guano
+th_name guano
+group guano
+orientation no
+color 0xcc6633
+csurvey 6 6 80
+path
+  moveTo -5 0
+  cubicTo -4 -2 -1 -2 0 0
+  lineTo 0 6
+  moveTo 5 0
+  cubicTo 4 -2 1 -2 0 0
+endpath
+endsymbol

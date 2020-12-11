@@ -233,6 +233,7 @@ layout symbols_mine
 			T:=identity;
 			symbol_distance:=0.45;
 			scale_factor:= 0.08;
+%			expansion:= 5;
 			pickup PenC;
 			path q, qq; q = bbox p;
 			pair outside;

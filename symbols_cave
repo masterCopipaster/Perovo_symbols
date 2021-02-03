@@ -2,6 +2,36 @@ encoding  utf-8
 layout symbols_cave
  
 	code metapost
+		
+		def l_u_rockfall (expr P) =
+			T:=identity;
+			cas := 0;
+			dlina := arclength P;
+			if dlina > 0:
+				shag:=adjust_step(dlina, 0.45u);
+				pickup PenB;
+				forever:
+					t1 := arctime (cas) of P;
+					t2 := arctime (cas + shag*1/3) of P;
+					t3 := arctime (cas + shag*2/3) of P;
+					t4 := arctime (cas + shag) of P;
+					p := (point t1 of P) --
+						 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
+						 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
+						 (point t4 of P) --
+						 cycle;
+					thfill p withcolor (0.98 red + 0.93 green + 0.68 blue);	 
+					q := (point t1 of P) --
+						 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
+						 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
+						 (point t4 of P);
+					thdraw q withcolor red;
+					cas := cas + shag;
+					exitif cas > dlina - (2*shag/3); % for rounding errors
+				endfor;
+			fi;
+		enddef;
+		initsymbol("l_u_rockfall");
 	
 		def s_northarrow (expr rot) =
             valscal=1.0; % scale your north arrow here

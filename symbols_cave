@@ -3,6 +3,63 @@ layout symbols_cave
  
 	code metapost
 		
+		def l_u_gourrim (expr P) =
+			T:=identity;
+			e := u;
+			u := 3;
+			cas := 0;
+			dlina := arclength P;
+			if dlina > 0:
+				shag:=adjust_step(dlina, 1.1*u);
+				pickup PenD;
+				forever:
+					t0 := arctime (cas) of P;
+					pair x; x := .1u * unitvector(thdir(P,t0) rotated 0);
+					pair y; y := .1u * unitvector(thdir(P,t0) rotated 90);
+					q := ((point t0 of P) + 1*x + 0*y) --
+					((point t0 of P) + 0*x + 1*y) --
+					((point t0 of P) + 0*x + 3*y) --
+					((point t0 of P) + 1*x + 4*y) --
+					((point t0 of P) + 3*x + 4*y) --
+					((point t0 of P) + 4*x + 3*y) --
+					((point t0 of P) + 4*x + 2*y) --
+					((point t0 of P) + 9*x + 2*y) --
+					((point t0 of P) + 10*x + 1*y) --
+					((point t0 of P) + 10*x + -1*y) --
+					((point t0 of P) + 9*x + -2*y) --
+					((point t0 of P) + 4*x + -2*y) --
+					((point t0 of P) + 4*x + -3*y) --
+					((point t0 of P) + 3*x + -4*y) --
+					((point t0 of P) + 1*x + -4*y) --
+					((point t0 of P) + 0*x + -3*y) --
+					((point t0 of P) + 0*x + -1*y) --
+					((point t0 of P) + 1*x + 0*y) --
+					cycle;
+					p := ((point t0 of P) + 7*x + 2*y) -- ((point t0 of P) + 7*x + -2*y);
+					path r; r := ((point t0 of P) + 9*x + 0*y) -- ((point t0 of P) + 10*x + 0*y);
+					thfill q withcolor (0.5 white + 0.5 green) ;
+					thdraw q withcolor (0.3 white) ;
+					thdraw p randomized (u/30) withcolor (0.3 white) ;
+					thdraw r randomized (u/30) withcolor (0.3 white) ;
+					cas := cas + shag;
+					exitif cas > dlina - (2*shag/3); % for rounding errors
+				endfor;
+			fi;
+		u := e;
+		enddef;
+		initsymbol("l_u_gourrim");
+		
+		def p_u_stratainclined (expr pos,theta,sc,al) =
+			U:=(.5u,.5u);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenC;
+			p:=(-.5u,.15u)--(.1u,.15u)..(.24u,.03u)--(.45u,.03u)--(.45u,.08u)--(.5u,.08u)--(.5u,-.08u)
+			--(.45u,-.08u)--(.45u,-.04u)--(.24u,-.04u)..(.1u,-.15u)--(-.5u,-.15u)--cycle;
+			thdraw p;
+			thfill p withcolor green;
+		enddef;
+		initsymbol("p_u_stratainclined");
+		
 		def l_u_rockfall (expr P) =
 			T:=identity;
 			cas := 0;

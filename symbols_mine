@@ -3,26 +3,36 @@ layout symbols_mine
  
 	code metapost
 	
+	symbol_complexity := 0;
+	symbol_complexity_area := 0;
+	symbol_complexity_line := 0;
+	symbol_complexity_point := 0;
+	
 		def l_u_stonework (expr P) =
 			T:=identity;
-			cas := 0;
-			dlina := arclength P;
-			if dlina > 0:
-				shag:=adjust_step(dlina, 0.75u);
-				pickup PenB;
-				forever:
-					t1 := arctime (cas + shag*1/10) of P;
-					t2 := arctime (cas + shag*9/10) of P;
-					q := ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated -90)) --
-						 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated -90)) --
-						 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated 90)) --
-						 ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated 90)) --
-						 cycle;
-					thfill q withcolor (0.98 red + 0.93 green + 0.68 blue);
-					thdraw q randomized (u/10) withcolor 0.5 white;
-					cas := cas + shag;
-					exitif cas > dlina - (2*shag/3); % for rounding errors
-				endfor;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P withcolor 0.4 white
+			else:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.75u);
+					pickup PenB;
+					forever:
+						t1 := arctime (cas + shag*1/10) of P;
+						t2 := arctime (cas + shag*9/10) of P;
+						q := ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated 90)) --
+							 cycle;
+						thfill q withcolor (0.98 red + 0.93 green + 0.68 blue);
+						thdraw q randomized (u/10) withcolor 0.5 white;
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
 			fi;
 		enddef;
 		initsymbol("l_u_stonework");
@@ -31,52 +41,62 @@ layout symbols_mine
 			T:=identity;
 			cas := 0;
 			dlina := arclength P;
-			if dlina > 0:
-				shag:=adjust_step(dlina, 0.45u);
-				pickup PenB;
-				forever:
-					t1 := arctime (cas) of P;
-					t2 := arctime (cas + shag*1/3) of P;
-					t3 := arctime (cas + shag*2/3) of P;
-					t4 := arctime (cas + shag) of P;
-					p := (point t1 of P) --
-						 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
-						 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
-						 (point t4 of P) --
-						 cycle;
-					thfill p withcolor (0.98 red + 0.93 green + 0.68 blue);	 
-					q := (point t1 of P) --
-						 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
-						 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
-						 (point t4 of P);
-					thdraw q withcolor red;
-					cas := cas + shag;
-					exitif cas > dlina - (2*shag/3); % for rounding errors
-				endfor;
+			if symbol_complexity_line > 1:
+				pickup PenA
+				thdraw P withcolor red
+			else:
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.45u);
+					pickup PenB;
+					forever:
+						t1 := arctime (cas) of P;
+						t2 := arctime (cas + shag*1/3) of P;
+						t3 := arctime (cas + shag*2/3) of P;
+						t4 := arctime (cas + shag) of P;
+						p := (point t1 of P) --
+							 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
+							 (point t4 of P) --
+							 cycle;
+						thfill p withcolor (0.98 red + 0.93 green + 0.68 blue);	 
+						q := (point t1 of P) --
+							 ((point t2 of P) + .25u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t3 of P) + .25u * unitvector(thdir(P,t3) rotated -90)) --
+							 (point t4 of P);
+						thdraw q withcolor red;
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
 			fi;
 		enddef;
 		initsymbol("l_u_rockfall");
 		
 		def l_u_freestonework (expr P) =
 			T:=identity;
-			cas := 0;
-			dlina := arclength P;
-			if dlina > 0:
-				shag:=adjust_step(dlina, 0.75u);
-				pickup PenD;
-				forever:
-					t1 := arctime (cas + shag*1/10) of P;
-					t2 := arctime (cas + shag*9/10) of P;
-					q := ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated -90)) --
-						 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated -90)) --
-						 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated 90)) --
-						 ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated 90)) --
-						 cycle;
-					thfill q withcolor (0.98 red + 0.93 green + 0.68 blue);
-					thdraw q randomized (u/10) withcolor 0.5 white;
-					cas := cas + shag;
-					exitif cas > dlina - (2*shag/3); % for rounding errors
-				endfor;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P withcolor 0.6 white
+			else:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, 0.75u);
+					pickup PenD;
+					forever:
+						t1 := arctime (cas + shag*1/10) of P;
+						t2 := arctime (cas + shag*9/10) of P;
+						q := ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated -90)) --
+							 ((point t2 of P) + .15u * unitvector(thdir(P,t2) rotated 90)) --
+							 ((point t1 of P) + .15u * unitvector(thdir(P,t1) rotated 90)) --
+							 cycle;
+						thfill q withcolor (0.98 red + 0.93 green + 0.68 blue);
+						thdraw q randomized (u/10) withcolor 0.5 white;
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
 			fi;
 		enddef;
 		initsymbol("l_u_freestonework");	
@@ -229,7 +249,7 @@ layout symbols_mine
 			endgroup;
 		enddef;
 		
-		def a_debris_AUT (expr p) =
+		def a_debris_AUT_complex (expr p) =
 			T:=identity;
 			symbol_distance:=0.45;
 			scale_factor:= 0.08;
@@ -270,7 +290,35 @@ layout symbols_mine
 			draw tmp_pic;
 		enddef;
 		
-		def a_blocks_AUT (expr p) =
+		beginpattern(debris_patt); 
+			#pickup PenC; 
+			draw -1000(up+right)--1000(up+right);
+			patternxstep(2mm);
+			#patternbbox(origin, 9up+9right);
+			#patterntransform(identity rotated 45);
+		endpattern;
+		
+		def a_debris_AUT_medium (expr p) =
+			T:=identity;
+			thfill p withpattern debris_patt;
+		enddef;
+		
+		def a_debris_AUT (expr p) = 
+			T:=identity;
+			if symbol_complexity_area=0:
+				a_debris_AUT_complex(p)
+			fi;
+			if symbol_complexity_area=1:
+				a_debris_AUT_medium(p)
+			fi;
+			if symbol_complexity_area>1:
+				thfill p withcolor 0.8 white
+			fi;
+		enddef;
+		
+		
+		
+		def a_blocks_AUT_complex (expr p) =
 			T:=identity;
 			symbol_distance:=0.6;
 			scale_factor:= 0.4;
@@ -310,23 +358,55 @@ layout symbols_mine
 			draw tmp_pic;
 		enddef;
 		
+		beginpattern(blocks_patt); 
+			#pickup PenC; 
+			draw -1000(up+right)--1000(up+right);
+			draw -1000(up+left)--1000(up+left);
+			patternxstep(2mm);
+			#patternbbox(origin, 9up+9right);
+			#patterntransform(identity rotated 45);
+		endpattern;
+		
+		def a_blocks_AUT_medium (expr p) =
+			T:=identity;
+			thfill p withpattern blocks_patt;
+		enddef;
+		
+		def a_blocks_AUT (expr p) = 
+			T:=identity;
+			if symbol_complexity_area=0:
+				a_blocks_AUT_complex(p)
+			fi;
+			if symbol_complexity_area=1:
+				a_blocks_AUT_medium(p)
+			fi;
+			if symbol_complexity_area>1:
+				thfill p withcolor 1.3(1.0 red + 0.2 green + 0.2 blue)
+			fi;
+		enddef;
+		
 		def l_wall_clay_AUT (expr P) =
 			T:=identity;
-			cas := 0;
-			dlzka := arclength P;
-			mojkrok:=adjust_step(dlzka, 0.15u);
-			pickup PenC;
-			forever:
-				t := arctime cas of P;
-				thdraw (origin shifted ((point t of P) + .12u
-					* unitvector(thdir(P,t) rotated -90)));
-				thdraw (origin shifted ((point t of P) - .12u
-					* unitvector(thdir(P,t) rotated -90)));
-				cas := cas + mojkrok;
-				exitif cas > dlzka + (mojkrok / 3); % for rounding errors
-			endfor;
-			pickup PenC;
-			thdraw P;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P
+			else:
+				cas := 0;
+				dlzka := arclength P;
+				mojkrok:=adjust_step(dlzka, 0.15u);
+				pickup PenC;
+				forever:
+					t := arctime cas of P;
+					thdraw (origin shifted ((point t of P) + .12u
+						* unitvector(thdir(P,t) rotated -90)));
+					thdraw (origin shifted ((point t of P) - .12u
+						* unitvector(thdir(P,t) rotated -90)));
+					cas := cas + mojkrok;
+					exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+				endfor;
+				pickup PenC;
+				thdraw P;
+			fi;
 		enddef;
 		
 		def l_u_gravitywall (expr P) = 
@@ -462,6 +542,92 @@ layout symbols_mine
 				(-.23u, .5u) -- cycle;
 			thdraw p;
 			thfill p withcolor (0.98 red + 0.93 green + 0.68 blue);	
+		enddef;
+		
+		def l_wall_debris_AUT (expr P) =
+		  T:=identity;
+		  pickup PenC;
+		  if symbol_complexity_line > 1:
+			  thdraw P withcolor (0.49red + 0.46green + 0.34blue)
+		  else:
+			  laenge := arclength P;
+			  path block;
+			  path old_block;
+
+			  cur := 0;
+			  t:= arctime cur of P;
+			  % draw first block
+			  old_block := (((-.0u,-.0u)--(.25u,-.15u)--(.45u,0.01u)--(.2u,.25u)--(.05u,.15u)--cycle));
+			  block_width := (xpart urcorner old_block - xpart ulcorner old_block);
+			  old_block:=old_block rotated angle(thdir(P,0)) shifted point t of P;
+			  thclean old_block;
+			  thdraw old_block;
+
+			  cur := cur + 0.9*block_width;
+			  t:= arctime cur of P;
+				% proceed with path
+				forever:
+				  % generate random block
+					block := punked (((-.25u,-.25u)--(0.25.u,-.25u)--(0.50u,0.01u)--(0.25u,.25u)--(-.25u,.25u)--cycle)
+					  randomized (u/4))
+					  scaled (uniformdeviate(0.3)+.4)
+					  rotated uniformdeviate(360);
+				  % check width of block
+					block_width := (xpart urcorner block - xpart ulcorner block);
+					exitif cur > (laenge- 2.5*block_width/2);
+					% find next position where the block fits in without intersecting the previous one
+				  forever:
+					exitif xpart ( (block rotated angle(-direction t of P) shifted point t of P) intersectiontimes old_block) < 0;
+						cur:=cur+0.01u;
+						t:= arctime cur of P;
+						exitif cur > (laenge- 2.5*block_width/2);
+					  endfor;
+					exitif cur > (laenge- 2.5*block_width/2);
+
+					old_block:= block rotated angle(-direction t of P) shifted point t of P;
+					thclean old_block;
+					thdraw old_block;
+					cur := cur + block_width/2;
+					t:= arctime cur of P;
+				endfor;
+				t:= arctime laenge-eps of P;
+
+				% generate last block
+				  block := (((-.0u,-.0u)--(.25u,-.15u)--(.45u,0.01u)--(.2u,.25u)--(.1u,.15u)--cycle));
+				 block_width := (xpart urcorner block - xpart ulcorner block);
+
+				% scale last block to fit in the remaining gap
+				 scale_factor:=1.5*(laenge-cur)/block_width;
+				 forever:
+					   exitif scale_factor < 0;  % bruces stab at preventing endless loop at large scales
+					   exitif xpart ( (block rotated angle(-direction t of P) scaled scale_factor shifted (point t of P)) intersectiontimes old_block) < 0;
+					   scale_factor:=scale_factor-0.01;
+				 endfor;
+				 if scale_factor > 0:
+				   thclean block rotated angle(-direction t of P) scaled scale_factor shifted (point t of P);
+				   thdraw block rotated angle(-direction t of P) scaled scale_factor shifted (point t of P);
+				 fi;
+			 fi;
+		enddef;
+		
+		def a_clay_AUT (expr Path) =
+			T:=identity;
+			%thclean Path;
+			if symbol_complexity_area > 1:
+				thfill Path withcolor (0.75red + 0.6green + 0.2blue)
+			else:
+				thfill Path withpattern pattern_sand_AUT;
+			fi;
+		enddef;
+		
+		def a_sand_AUT (expr Path) =
+			T:=identity;
+			%thclean Path;
+			if symbol_complexity_area > 1:
+				thfill Path withcolor (red + green)
+			else:
+				thfill Path withpattern pattern_sand_AUT;
+			fi;
 		enddef;
 				
 	endcode

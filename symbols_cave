@@ -2,50 +2,66 @@ encoding  utf-8
 layout symbols_cave
  
 	code metapost
+	
+		def l_u_fence (expr P) =
+  		  if ATTR__elevation:
+  		    T:=identity;
+  		    cas := 0;
+  		    dlzka := arclength P;
+  		    mojkrok:=adjust_step(dlzka, 1u);
+  		    pickup PenD;
+  		    pair tmppoint;
+  		    tmph := 1 / Scale * 72 / 2.54;  % 1 m height
+  		    tmppoint:=(point 0 of P) +(0,tmph);
+ 		    forever:
+		      t := arctime cas of P;
+  		      draw point t of P -- (point t of P)+(0,tmph) withpen PenD;
+  		      if cas > 0:
+  		        draw tmppoint -- (point t of P)+(0,tmph) withpen PenC;
+  		        tmppoint := (point t of P)+(0,tmph);
+  		      fi;
+   		      cas := cas + mojkrok;
+   		      exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+  		    endfor;
+ 		  else:
+  		    T:=identity;
+  		    cas := 0;
+   		    pair coord;
+  		    sq_size:=0.12u;
+  		    dlzka := arclength P;
+ 		    mojkrok:=adjust_step(dlzka, u);
+ 		    pickup PenD;
+ 		    forever:
+  		      t := arctime cas of P;
+  		      coord := point t of P;
+%     		  thfill coord+(-sq_size,-sq_size)--coord+(sq_size,-sq_size)--coord+(sq_size,sq_size)--coord+(-sq_size,sq_size)--cycle;
+  		      cas := cas + mojkrok;
+  		      exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+ 		    endfor;
+  		    pickup PenC;
+  		    thdraw P;
+ 		  fi;
+		enddef;
+		initsymbol("l_u_fence");
 		
-		def l_u_gourrim (expr P) =
-			T:=identity;
-			e := u;
-			u := 3;
-			cas := 0;
-			dlina := arclength P;
-			if dlina > 0:
-				shag:=adjust_step(dlina, 1.1*u);
-				pickup PenD;
-				forever:
-					t0 := arctime (cas) of P;
-					pair x; x := .1u * unitvector(thdir(P,t0) rotated 0);
-					pair y; y := .1u * unitvector(thdir(P,t0) rotated 90);
-					q := ((point t0 of P) + 1*x + 0*y) --
-					((point t0 of P) + 0*x + 1*y) --
-					((point t0 of P) + 0*x + 3*y) --
-					((point t0 of P) + 1*x + 4*y) --
-					((point t0 of P) + 3*x + 4*y) --
-					((point t0 of P) + 4*x + 3*y) --
-					((point t0 of P) + 4*x + 2*y) --
-					((point t0 of P) + 9*x + 2*y) --
-					((point t0 of P) + 10*x + 1*y) --
-					((point t0 of P) + 10*x + -1*y) --
-					((point t0 of P) + 9*x + -2*y) --
-					((point t0 of P) + 4*x + -2*y) --
-					((point t0 of P) + 4*x + -3*y) --
-					((point t0 of P) + 3*x + -4*y) --
-					((point t0 of P) + 1*x + -4*y) --
-					((point t0 of P) + 0*x + -3*y) --
-					((point t0 of P) + 0*x + -1*y) --
-					((point t0 of P) + 1*x + 0*y) --
-					cycle;
-					p := ((point t0 of P) + 7*x + 2*y) -- ((point t0 of P) + 7*x + -2*y);
-					path r; r := ((point t0 of P) + 9*x + 0*y) -- ((point t0 of P) + 10*x + 0*y);
-					thfill q withcolor (0.5 white + 0.5 green) ;
-					thdraw q withcolor (0.3 white) ;
-					thdraw p randomized (u/30) withcolor (0.3 white) ;
-					thdraw r randomized (u/30) withcolor (0.3 white) ;
-					cas := cas + shag;
-					exitif cas > dlina - (2*shag/3); % for rounding errors
-				endfor;
-			fi;
-		u := e;
+		def l_u_gour_rim (expr P) =
+          T:=identity;
+          cas := 0;
+          dlzka := arclength P;
+          mojkrok:=adjust_step(dlzka, .5u);
+          if (cycle P) and (dlzka < 2.5u):   % make at least 5 curls on a cyclic path
+            mojkrok := dlzka/5;
+          fi;
+          pickup PenC;
+          t1:=0;
+          forever:
+            t2 := arctime (cas + mojkrok) of P;
+            thdraw (point t1 of P){dir (angle(thdir(P,t1)) + 60)} ..
+                   {dir (angle(thdir(P,t2)) - 60)}(point t2 of P);
+            cas := cas + mojkrok;
+            exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+            t1:=t2;
+          endfor;
 		enddef;
 		initsymbol("l_u_gourrim");
 		
@@ -182,3 +198,29 @@ layout symbols_cave
   color map-fg [98 93 68]
 
 endlayout
+
+text ru "line fault" "разлом"
+text ru "point danger" "опасность"
+text ru "point water-drip" "водокап"
+text ru "point bones" "останки животных"
+
+text ru "line u:rockfall" "обвал"
+text ru "line u:fence" "ограждение"
+text ru "line u:gour_rim" "край гура"
+
+text ru "area u:breccia" "брекчия"
+text ru "area u:flowstone" "натёки"
+text ru "area u:limestone" "известняк"
+text ru "area u:sandstone" "песчаник"
+text ru "area u:tufa" "туф"
+
+text ru "point u:clay_coating" "глиняная пыль"
+text ru "point u:clay_pouring" "глиняный наплыв"
+text ru "point u:element" "элемент залегания"
+text ru "point u:fossil" "окаменелость"
+text ru "point u:manganese_bloom" "марганцевый налет"
+text ru "point u:ocher_bloom" "охристый налёт"
+text ru "point u:mirror" "зеркало скольжения"
+text ru "point u:mirror_down" "зеркало опущенного блока"
+text ru "point u:mirror_up" "зеркало поднятого блока"
+text ru "point u:organ_pipe" "органная труба"

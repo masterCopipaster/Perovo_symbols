@@ -3,6 +3,94 @@ layout symbols_cave
  
 	code metapost
 	
+	    beginpattern(pattern_u_limestone);
+    	    pickup PenC;
+    	    p:=(.5u,0) -- (0,0) -- (0,.5u) -- (u,.5u) -- (u,0) -- (.5u,0) -- (.5u,-.5u);
+    	    draw p;
+    	    draw p shifted (u,u);
+    	    patternxstep(u);
+    	    patternystep(u);
+        endpattern;
+
+        def a_u_limestone (expr Path) =
+            T:=identity;
+            thclean Path;
+            thfill Path withpattern pattern_u_limestone;
+        enddef;
+		
+		beginpattern(pattern_u_sandstone);
+            pickup PenC;
+            draw (.5u,.33u); draw (.5u,.66u); draw (.5u,-.33u); draw (.5u,-.66u);
+            draw (u,.5u);
+            draw (1.5u,.33u); draw (1.5u,.66u); draw (1.5u,-.33u); draw (1.5u,-.66u);
+            draw (0,-.5u);			
+			p:=(u,0) -- (0,0) -- (0,u) -- (2u,u) -- (2u,0) -- (u,0) -- (u,-u);
+    	    draw p;
+    	    draw p shifted (2u,2u);
+    	    patternxstep(2u);
+    	    patternystep(2u);
+        endpattern;
+
+        def a_u_sandstone (expr Path) =
+            T:=identity;
+            thclean Path;
+            thfill Path withpattern pattern_u_sandstone;
+        enddef;
+		
+		beginpattern(pattern_u_breccia);
+            pickup PenC;
+			q:=(-.15u,-.1u)--(.15u,-.1u)--(0,.15u)--cycle;
+			draw q rotated 20 shifted (.6u,.4u);
+			draw q rotated 40 shifted (1.4u,.6u);
+			draw q rotated 40 shifted (0.4u,-.4u);
+			draw q rotated 20 shifted (1.6u,-.6u);		
+			p:=(u,0) -- (0,0) -- (0,u) -- (2u,u) -- (2u,0) -- (u,0) -- (u,-u);
+    	    draw p;
+    	    draw p shifted (2u,2u);
+    	    patternxstep(2u);
+    	    patternystep(2u);
+        endpattern;
+
+        def a_u_breccia (expr Path) =
+            T:=identity;
+            thclean Path;
+            thfill Path withpattern pattern_u_breccia;
+        enddef;
+		
+		beginpattern(pattern_u_tufa);
+    		pickup PenC;
+    		p:=(-.5u,0){down} .. {up}(-.1666u,0){down}..
+        		{up}(.1666u,0){down} .. {up}(.5u,0);
+    		draw p;
+    		draw p shifted (0.5u,0.2u);
+    		patternxstep(1.0u);
+    		patternystep(0.4u);
+            patterntransform(identity rotated 180);
+		endpattern;
+
+        def a_u_tufa (expr Path) =
+            T:=identity;
+            thclean Path;
+            thfill Path withpattern pattern_u_tufa;
+        enddef;
+
+		def l_u_slope_sheer (expr P) =
+		  T:=identity;
+		  cas := 0;
+		  dlzka := arclength P;
+		  mojkrok:=adjust_step(dlzka, 1.5u);
+		  pickup PenD;
+		  forever:
+		    t := arctime cas of P;
+		    mark_ (P,t,1.2u);
+		    cas := cas + mojkrok;
+		    exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+		  endfor;
+		  pickup PenC;
+		  thdraw P;
+		enddef;
+	
+	
 		def l_u_fence (expr P) =
   		  if ATTR__elevation:
   		    T:=identity;
@@ -34,7 +122,8 @@ layout symbols_cave
  		    forever:
   		      t := arctime cas of P;
   		      coord := point t of P;
-%     		  thfill coord+(-sq_size,-sq_size)--coord+(sq_size,-sq_size)--coord+(sq_size,sq_size)--coord+(-sq_size,sq_size)--cycle;
+              draw coord+(-sq_size,-sq_size) -- coord+(sq_size,sq_size) withpen PenD;
+              draw coord+(sq_size,-sq_size) -- coord+(-sq_size,sq_size) withpen PenD;
   		      cas := cas + mojkrok;
   		      exitif cas > dlzka + (mojkrok / 3); % for rounding errors
  		    endfor;
@@ -203,10 +292,12 @@ text ru "line fault" "разлом"
 text ru "point danger" "опасность"
 text ru "point water-drip" "водокап"
 text ru "point bones" "останки животных"
+text ru "point mudcrack" "глина растрескавшаяся"
 
 text ru "line u:rockfall" "обвал"
 text ru "line u:fence" "ограждение"
 text ru "line u:gour_rim" "край гура"
+text ru "line u:slope_sheer" "склон отвесный"
 
 text ru "area u:breccia" "брекчия"
 text ru "area u:flowstone" "натёки"

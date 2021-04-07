@@ -485,6 +485,15 @@ layout symbols_mine
 		enddef;
 		initsymbol("p_u_borehole");
 		
+		def p_u_fossil (expr pos,theta,sc,al)=
+			U:=(0,0);
+			T:=identity aligned al rotated theta scaled sc shifted pos;
+			pickup PenB;
+			p := (-.05u, 0) .. (.085u, 0) .. (-.15u, 0) .. (.26u, 0) .. (-.45u, 0) .. (.63u, 0) -- (.63u, 0) .. (.47u, .05u) .. (0.32u, 0);
+			thdraw p;
+		enddef;
+		initsymbol("p_u_fossil");
+		
 		def l_u_woodensupport (expr P)=
 			T:=identity;
 			pickup PenD;

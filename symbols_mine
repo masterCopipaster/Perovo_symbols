@@ -693,6 +693,45 @@ layout symbols_mine
 			fi;
 		enddef;
 		initsymbol("l_u_track");
+        
+        def p_u_block (expr pos,theta,sc,al)=
+            U:=(0,0);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenC;
+			p :=  (1u,.48u)--(1u,-.48u)--(-1u,-.48u)--(-1u,.48u)--cycle;
+			thclean p;
+			thdraw p;
+            q :=  fullcircle scaled 0.3u;
+            thdraw q;
+            thdraw q shifted (.6u,0);
+            thdraw q shifted (-.6u,0);
+        enddef;
+        initsymbol("p_u_block");
+		
+		def l_fault (expr P) =
+			T:=identity;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P withcolor red
+			else:
+	            cursor := 0;
+	            totalLength := arclength P;
+	            elementSize := adjust_step(totalLength, 2u); % symbol length nudged to be multiple of path length
+	            pickup PenA;
+	            forever:
+		            t0 := arctime (cursor + elementSize * 2/22) of P;
+		            t1 := arctime (cursor + elementSize * 11/22) of P;
+		            t2 := arctime (cursor + elementSize * 17/22) of P;
+		            t3 := arctime (cursor + elementSize * 18/22) of P;
+
+		            thdraw (subpath (t0,t1) of P) withcolor red;
+		            thdraw (subpath (t2,t3) of P) withcolor red;
+
+		            cursor := cursor + elementSize;
+		            exitif cursor > totalLength - (elementSize / 2);
+	            endfor;
+			fi;
+		enddef;
 				
 	endcode
 
@@ -709,6 +748,7 @@ endlayout
 
 text ru "line wall" "монолит"		# ???
 text ru "line wall:debris" "бут"
+text ru "line fault" "трещина"
 text ru "area debris" "бут"
 text ru "area blocks" "обвал"
 text ru "point station" "пикет"		# ???
@@ -731,3 +771,4 @@ text ru "point u:woodensupport" "крепь деревянная"
 text ru "point u:borehole" "скважина"
 text ru "point u:closeent" "закрытый вход"
 text ru "point u:inscription" "графити"
+text ru "point u:block" "готовая продукция"

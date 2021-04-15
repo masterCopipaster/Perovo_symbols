@@ -698,13 +698,13 @@ layout symbols_mine
             U:=(0,0);
             T:=identity aligned al rotated theta scaled sc shifted pos;
             pickup PenC;
-			p :=  (1u,.48u)--(1u,-.48u)--(-1u,-.48u)--(-1u,.48u)--cycle;
+			p :=  (.5u,.24u)--(.5u,-.24u)--(-.5u,-.24u)--(-.5u,.24u)--cycle;
 			thclean p;
 			thdraw p;
-            q :=  fullcircle scaled 0.3u;
+            q :=  fullcircle scaled 0.15u;
             thdraw q;
-            thdraw q shifted (.6u,0);
-            thdraw q shifted (-.6u,0);
+            thdraw q shifted (.3u,0);
+            thdraw q shifted (-.3u,0);
         enddef;
         initsymbol("p_u_block");
 		
@@ -716,7 +716,7 @@ layout symbols_mine
 			else:
 	            cursor := 0;
 	            totalLength := arclength P;
-	            elementSize := adjust_step(totalLength, 2u); % symbol length nudged to be multiple of path length
+	            elementSize := adjust_step(totalLength, u); % symbol length nudged to be multiple of path length
 	            pickup PenA;
 	            forever:
 		            t0 := arctime (cursor + elementSize * 2/22) of P;
@@ -731,6 +731,7 @@ layout symbols_mine
 		            exitif cursor > totalLength - (elementSize / 2);
 	            endfor;
 			fi;
+			thdrawoptions();
 		enddef;
 				
 	endcode

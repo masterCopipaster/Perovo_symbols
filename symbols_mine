@@ -333,11 +333,9 @@ layout symbols_mine
 			fi;
 		enddef;
 		
-		
-		
 		def a_blocks_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.6;
+			symbol_distance:=0.55;
 			scale_factor:= 0.4;
 			pickup PenC;
 			path q, qq; q = bbox p;
@@ -733,6 +731,29 @@ layout symbols_mine
 			fi;
 			thdrawoptions();
 		enddef;
+		
+        def l_u_doline (expr P) =
+          T:=identity;
+          laenge:= arclength P;
+          symsize:=adjust_step(laenge,2u);
+          triangle_width:=symsize/10;
+          cur:=(symsize-triangle_width)/2;
+          pickup PenC;
+          forever:
+            t1 := arctime (cur) of P;
+            t  := arctime (cur + triangle_width/2) of P;
+            t2 := arctime (cur + triangle_width) of P;
+              thfill (subpath (t1,t2) of P) -- 
+                ((point t of P) + symsize/2 * unitvector(thdir(P,t) rotated 90)) -- 
+                cycle;
+              thdraw (point t2 of P) -- ((point t of P) + symsize/2 * unitvector(thdir(P,t) rotated 90)) -- 
+                (point t1 of P);
+            cur := cur + symsize;
+            exitif cur > laenge - (1*symsize/3); % for rounding errors
+            t1:=arctime (cur) of P;
+          endfor;
+        enddef;
+        initsymbol("l_u_doline");
 				
 	endcode
 
@@ -765,6 +786,7 @@ text ru "line u:gravitywall" "монолит вторичный"
 text ru "line u:woodensupport" "крепь деревянная"
 text ru "line u:woodensleeper" "шпала деревянная"
 text ru "line u:track" "откатной путь"
+text ru "line u:doline" "точильный ров / воронка"
 
 text ru "point u:pollution" "мусор"
 text ru "point u:stonesupport" "крепь-кладка"
@@ -773,3 +795,4 @@ text ru "point u:borehole" "скважина"
 text ru "point u:closeent" "закрытый вход"
 text ru "point u:inscription" "графити"
 text ru "point u:block" "готовая продукция"
+

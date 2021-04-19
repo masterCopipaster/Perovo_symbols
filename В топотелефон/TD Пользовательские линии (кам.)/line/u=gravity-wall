@@ -2,7 +2,8 @@ encoding utf-8
 symbol line
 name secondary_wall
 name-ru вторичная_стена
-th_name u:gravitywall -outline out
+th_name u:gravitywall
+options -outline out
 group wall
 color 0xff0000 0xff
 width 1

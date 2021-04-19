@@ -10,6 +10,7 @@ name-sk suchý_múrik
 name-ro perete_sec
 name-de Trockenmauer
 th_name u:stonework
+options -outline out
 group wall
 color 0xff0000 0xff
 width 1

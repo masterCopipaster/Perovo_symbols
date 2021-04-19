@@ -2,7 +2,8 @@ encoding utf-8
 symbol line
 name wall_rockfall
 name-ru стена_oбвальная
-th_name u:rockfall -outline out
+th_name u:rockfall
+options -outline out
 group wall
 color 0xff0000 0xff
 csurvey 5 4 1 1

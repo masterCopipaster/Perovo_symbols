@@ -381,15 +381,16 @@ layout symbols_cave
         enddef;
         initsymbol("p_u_clay_pouring");    
 
-        def p_waterdrip_SBE (expr pos,theta,sc,al)=						%!!!!!!!!!! не работает !!!!!!!!!!
-            U:=(.2u,.4u);													%!!!!!!!!!! не работает !!!!!!!!!!
-            T:=identity aligned al rotated theta scaled sc shifted pos;		%!!!!!!!!!! не работает !!!!!!!!!!
-            pickup PenC;													%!!!!!!!!!! не работает !!!!!!!!!!
-            p := (0,.4u){dir -125}..{dir -105}(-.2u,-.1u){down}..			%!!!!!!!!!! не работает !!!!!!!!!!
-                {up}(.2u,-.1u){dir 105}...{dir 125}(0,.4u)..cycle;			%!!!!!!!!!! не работает !!!!!!!!!!
-            thfill p withcolor blue;										%!!!!!!!!!! не работает !!!!!!!!!!
-            thdraw p;														%!!!!!!!!!! не работает !!!!!!!!!!
-        enddef;																%!!!!!!!!!! не работает !!!!!!!!!!
+        def p_waterdrip_RSS (expr pos,theta,sc,al)=							%!!!!!!!!!! работает !!!!!!!!!!
+            U:=(.2u,.4u);													%!!!!!!!!!! работает !!!!!!!!!!
+            T:=identity aligned al rotated theta scaled sc shifted pos;		%!!!!!!!!!! работает !!!!!!!!!!
+            pickup PenC;													%!!!!!!!!!! работает !!!!!!!!!!
+            p := (0,.4u){dir -125}..{dir -105}(-.2u,-.1u){down}..			%!!!!!!!!!! работает !!!!!!!!!!
+                {up}(.2u,-.1u){dir 105}...{dir 125}(0,.4u)..cycle;			%!!!!!!!!!! работает !!!!!!!!!!
+            thfill p withcolor blue;										%!!!!!!!!!! работает !!!!!!!!!!
+            thdraw p;														%!!!!!!!!!! работает !!!!!!!!!!
+        enddef;																%!!!!!!!!!! работает !!!!!!!!!!
+		initsymbol("p_waterdrip_RSS");
 		
         def p_u_crustacean (expr pos,theta,sc,al)=
             U:=(0,0);
@@ -416,7 +417,7 @@ layout symbols_cave
   symbol-assign point pillar UIS
   symbol-assign point clay SKBB
   symbol-assign area clay SKBB
-#  symbol-assign point water-drip RSS										#!!!!!!!!!! не работает !!!!!!!!!!
+  symbol-assign point water-drip RSS										#!!!!!!!!!! работает !!!!!!!!!!
   color map-fg [98 93 68]
   
 endlayout

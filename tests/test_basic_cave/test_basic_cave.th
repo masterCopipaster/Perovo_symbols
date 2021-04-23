@@ -2,7 +2,7 @@
 
 survey test_basic_cave -title "test basic cave"
 
-  # input "test_basic_cave-1p.th2"
+  input "test_basic_cave-1p.th2"
 
   # map m1p -projection plan
   #   test_basic_cave-1p

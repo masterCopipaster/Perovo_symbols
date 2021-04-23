@@ -1,0 +1,12 @@
+encoding  utf-8
+input ../../symbols_cave        # Подгружаем файл с пользовательскими линиями и т.п.
+  
+layout pdf-map  -copy symbols_cave
+  scale 1 20 
+  legend on
+  language ru
+endlayout
+
+source test_basic_cave.th
+  
+export map -proj plan -fmt pdf -layout pdf-map -o test_basic_cave.pdf

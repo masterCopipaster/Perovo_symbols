@@ -266,7 +266,7 @@ layout symbols_mine
 		
 		def a_debris_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.45;
+			symbol_distance:=0.5;
 			scale_factor:= 0.08;
 %			expansion:= 5;
 			pickup PenC;
@@ -753,11 +753,23 @@ layout symbols_mine
             t1:=arctime (cur) of P;
           endfor;
         enddef;
-        initsymbol("l_u_doline");
+        initsymbol("l_u_doline");    
+
+        def p_waterdrip_RSS (expr pos,theta,sc,al)=
+            U:=(.2u,.4u);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenC;
+            p := (0,.4u){dir -125}..{dir -105}(-.2u,-.1u){down}..
+                {up}(.2u,-.1u){dir 105}...{dir 125}(0,.4u)..cycle;
+            thfill p withcolor blue;
+            thdraw p;
+        enddef;
+		initsymbol("p_waterdrip_RSS");
 				
 	endcode
 
   symbol-set AUT
+  symbol-assign point water-drip RSS
   color map-fg [98 93 68]
   symbol-color line wall:debris [50 50 50]
   symbol-color line wall:clay [40 13 13]
@@ -778,6 +790,7 @@ text ru "point danger" "опасность"
 text ru "point continuation" "перспективно"
 text ru "point blocks" "обвал"
 text ru "point archeo-material" "артефакт"
+text ru "point water-drip" "водокап"
 
 text ru "line u:stonework" "опорная кладка"
 text ru "line u:freestonework" "ненагруженная кладка"

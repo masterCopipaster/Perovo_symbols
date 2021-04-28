@@ -35,12 +35,12 @@ endlayout
 layout general-map  -copy general
   scale 1 20                              # Масштаб съёмки для карты
   cs lat-long                               # Система координат для следующей строчки
-  grid-origin 43.242778  40.510000  370 m   # "Нулевая точка" для сетки    
+  grid-origin 43.0  40.0  100 m           # "Нулевая точка" для сетки    
 endlayout
 
 layout general-atlas  -copy general
   cs lat-long                               # Система координат для следующей строчки
-  grid-origin 43.24731827  40.50842097  0 m   # "Нулевая точка" для сетки    
+  grid-origin 43.0  40.0  0 m               # "Нулевая точка" для сетки    
 #  page-setup 420 297 410 287 5 5 mm         # А3
   page-setup 840 594 820 574 10 10 mm       # А1
 #  size 390 222 mm                           # А3
@@ -54,8 +54,8 @@ endlayout
 layout pdf-map-plan  -copy general-map
   grid-size 10 10 10 m                       # Размер ячейки сетки
   map-header 10 -3 nw                        # Положение основной надписи карты
-  map-image 55 -3 nw ../../!components/Mchishta.png  # Растровое изображение в заданной точке карты
-  map-image 70 -3 nw ../../!components/RSS.png       # Растровое изображение в заданной точке карты
+  map-image 55 -3 nw ../../Mchishta.png      # Растровое изображение в заданной точке карты
+  map-image 70 -3 nw ../../RSS.png           # Растровое изображение в заданной точке карты
   legend on                                  # Легенда  карты вкл/выкл
   legend-width 30 cm                         # Ширина поля легенды карты
   legend-columns 6                           # Число колонок в легенде карты
@@ -65,8 +65,8 @@ endlayout
 layout pdf-map-ext  -copy general-map
   grid-size 20 20 20 m                      # Размер ячейки сетки
   map-header 3 2 nw                        # Положение основной надписи карты
-  map-image 8.5 2 nw ../../!components/Mchishta.png  # Растровое изображение в заданной точке карты
-  map-image 10 2 nw ../../!components/RSS.png       # Растровое изображение в заданной точке карты
+  map-image 8.5 2 nw ../../Mchishta.png     # Растровое изображение в заданной точке карты
+  map-image 10 2 nw ../../RSS.png           # Растровое изображение в заданной точке карты
   legend on                                 # Легенда  карты вкл/выкл
   legend-width 60 cm                         # Ширина поля легенды карты
   legend-columns 12                          # Число колонок в легенде карты

@@ -379,17 +379,17 @@ layout symbols_cave
             thdraw p rotated (270) shifted (0,.45u);
             thdraw p rotated (270) shifted (0,-.45u);
         enddef;
-        initsymbol("p_u_clay_pouring");    
+        initsymbol("p_u_clay_pouring");
 
-        def p_waterdrip_RSS (expr pos,theta,sc,al)=							%!!!!!!!!!! работает !!!!!!!!!!
-            U:=(.2u,.4u);													%!!!!!!!!!! работает !!!!!!!!!!
-            T:=identity aligned al rotated theta scaled sc shifted pos;		%!!!!!!!!!! работает !!!!!!!!!!
-            pickup PenC;													%!!!!!!!!!! работает !!!!!!!!!!
-            p := (0,.4u){dir -125}..{dir -105}(-.2u,-.1u){down}..			%!!!!!!!!!! работает !!!!!!!!!!
-                {up}(.2u,-.1u){dir 105}...{dir 125}(0,.4u)..cycle;			%!!!!!!!!!! работает !!!!!!!!!!
-            thfill p withcolor blue;										%!!!!!!!!!! работает !!!!!!!!!!
-            thdraw p;														%!!!!!!!!!! работает !!!!!!!!!!
-        enddef;																%!!!!!!!!!! работает !!!!!!!!!!
+        def p_waterdrip_RSS (expr pos,theta,sc,al)=
+            U:=(.2u,.4u);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenC;
+            p := (0,.4u){dir -125}..{dir -105}(-.2u,-.1u){down}..
+                {up}(.2u,-.1u){dir 105}...{dir 125}(0,.4u)..cycle;
+            thfill p withcolor blue;
+            thdraw p;
+        enddef;
 		initsymbol("p_waterdrip_RSS");
 		
         def p_u_crustacean (expr pos,theta,sc,al)=
@@ -417,7 +417,7 @@ layout symbols_cave
   symbol-assign point pillar UIS
   symbol-assign point clay SKBB
   symbol-assign area clay SKBB
-  symbol-assign point water-drip RSS										#!!!!!!!!!! работает !!!!!!!!!!
+  symbol-assign point water-drip RSS
   color map-fg [98 93 68]
   
 endlayout

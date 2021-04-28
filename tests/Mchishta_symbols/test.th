@@ -1,0 +1,10 @@
+encoding  utf-8
+# 2021.03.31 created by TopoDroid v 5.1.2
+
+survey Mchishta_symbols_test -title "Тест символов"
+    # тест символов 
+    
+   input "Mchishta_symbols.th"
+
+endsurvey
+

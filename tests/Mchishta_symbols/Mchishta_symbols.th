@@ -1,0 +1,26 @@
+# 2021.03.31 created by TopoDroid v 5.1.2
+
+survey Mchishta_symbols -title "Mchishta symbols"
+    # тест символов 
+
+  centerline
+    date 2021.03.25 
+
+    station 1 ""
+    mark 1 fixed
+
+    units length meters
+    units compass clino degrees
+    data normal from to length compass clino
+    extend right
+    0 1 1.00 0.0 0.0
+  endcenterline
+
+   input "Mchishta_symbols-1p.th2"
+   input "Mchishta_symbols-xx1.th2"
+
+   map m1p -projection plan
+     Mchishta_symbols-1p
+   endmap
+
+endsurvey

@@ -1,1 +1,10 @@
 /temp/
+*thTMPDIR*
+*.pdf
+*.lox
+*.log
+*.dat
+*.dxf
+*.kml
+*.html
+*~$*

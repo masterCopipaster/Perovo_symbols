@@ -1,0 +1,93 @@
+encoding  utf-8
+source test.th                       # Файл данных для обработки
+
+input ../../symbols_cave        # Подгружаем файл с пользовательскими линиями и т.п.
+
+layout general  -copy symbols_cave
+  grid bottom                               # Сетка в нижнем слое
+#  color map-fg map
+#  color map-fg scrap
+  color-legend off
+  language ru                               # Язык надписей в карте
+  grid-coords border
+  debug station-names
+#  debug all
+  survey-level 0
+#  statistics topo off 
+  statistics topo-length on
+  code tex-map                              # Альтернативно одарённая основная надпись (блок)
+    \cavename={\size [25] Тест символов (Мчишта)}   % Название пещеры принудительно
+#    \cavedepth={}  %empty                  % Глубина пещеры принудительно (пустое значение не отображается)
+#    \currentdate={currentdate} 
+#    \def\maplayout{
+#    \legendbox{0}{100}{NW}{\northarrow}
+#    }
+  endcode
+  symbol-assign point station SKBB
+#  symbol-show point flag:entrance
+#  symbol-show point flag:dig
+#  symbol-hide special splay-shots
+#  disable splay-shots
+  map-header-bg on                          # Заливка фона основной надписи вкл/выкл
+  doc-author "Общество исследователей Мчишты"   # Автор документа
+endlayout
+
+layout general-map  -copy general
+  scale 1 20                              # Масштаб съёмки для карты
+  cs lat-long                               # Система координат для следующей строчки
+  grid-origin 43.242778  40.510000  370 m   # "Нулевая точка" для сетки    
+endlayout
+
+layout general-atlas  -copy general
+  cs lat-long                               # Система координат для следующей строчки
+  grid-origin 43.24731827  40.50842097  0 m   # "Нулевая точка" для сетки    
+#  page-setup 420 297 410 287 5 5 mm         # А3
+  page-setup 840 594 820 574 10 10 mm       # А1
+#  size 390 222 mm                           # А3
+  size 805 464 mm                           # А1
+  scale 1 1000                               # Масштаб съёмки для атласа
+  legend on                                 # Легенда  карты вкл/выкл
+  legend-width 360 cm                        # Ширина поля легенды карты
+  legend-columns 8                         # Число колонок в легенде карты
+endlayout
+
+layout pdf-map-plan  -copy general-map
+  grid-size 10 10 10 m                       # Размер ячейки сетки
+  map-header 10 -3 nw                        # Положение основной надписи карты
+  map-image 55 -3 nw ../../!components/Mchishta.png  # Растровое изображение в заданной точке карты
+  map-image 70 -3 nw ../../!components/RSS.png       # Растровое изображение в заданной точке карты
+  legend on                                  # Легенда  карты вкл/выкл
+  legend-width 30 cm                         # Ширина поля легенды карты
+  legend-columns 6                           # Число колонок в легенде карты
+  map-comment "Рабочая схема Общества иследователей Мчишты"  # Заданная фраза внутри основной надписи
+endlayout
+
+layout pdf-map-ext  -copy general-map
+  grid-size 20 20 20 m                      # Размер ячейки сетки
+  map-header 3 2 nw                        # Положение основной надписи карты
+  map-image 8.5 2 nw ../../!components/Mchishta.png  # Растровое изображение в заданной точке карты
+  map-image 10 2 nw ../../!components/RSS.png       # Растровое изображение в заданной точке карты
+  legend on                                 # Легенда  карты вкл/выкл
+  legend-width 60 cm                         # Ширина поля легенды карты
+  legend-columns 12                          # Число колонок в легенде карты
+  map-comment "Разрез-развёртка: Приложение к схеме Общества иследователей Мчишты"  # Заданная фраза внутри основной надписи
+endlayout
+
+layout pdf-atlas-plan  -copy general-atlas
+#  own-pages 1
+  grid-size 100 100 100 m                      # Размер ячейки сетки
+  map-header 3 2 nw                        # Положение основной надписи карты
+endlayout
+
+layout pdf-atlas-ext  -copy general-atlas
+#  own-pages 1
+  grid-size 50 50 50 m                      # Размер ячейки сетки
+  map-header 3 2 nw                        # Положение основной надписи карты
+endlayout
+
+#select m1p@Mchishta_symbols
+
+  export map -proj plan -fmt pdf -layout pdf-map-plan -o test(Mchishta).pdf
+#  export map -proj extended -fmt pdf -layout pdf-map-ext -o P1(Abshdza)_map_ext.pdf
+#  export atlas -proj plan -fmt pdf -layout pdf-atlas-plan -o P1(Abshdza)_atlas_plan.pdf
+#  export atlas -proj extended -fmt pdf -layout pdf-atlas-ext -o P1(Abshdza)_atlas_ext.pdf

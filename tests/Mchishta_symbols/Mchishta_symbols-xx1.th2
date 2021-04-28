@@ -1,0 +1,21 @@
+encoding utf-8
+##XTHERION## xth_me_area_adjust 69.1 -358.9 326.8 -111.4
+##XTHERION## xth_me_area_zoom_to 25
+
+# 2021.04.13 created by TopoDroid v. 5.1.2
+
+scrap Mchishta_symbols-xx1 -projection none -scale [0 0 39.3701 0 0 0 1 0 m]
+
+line wall
+  169.08 -236.65
+  175.03 -250.52 193.88 -260.60 208.13 -258.87
+  217.56 -257.72 226.02 -247.10 226.82 -238.30
+  227.12 -232.07 228.15 -223.69 223.39 -218.70
+  216.90 -211.91 205.47 -210.43 196.60 -211.44
+  183.82 -212.89 174.29 -226.10 169.08 -236.65
+endline
+
+
+
+
+endscrap

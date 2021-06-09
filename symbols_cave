@@ -1,5 +1,5 @@
 encoding  utf-8
-layout symbols_cave
+layout symbols
  
     code metapost
     
@@ -408,6 +408,29 @@ layout symbols_cave
 			thdraw (.0u,-.01u){dir 230}..{dir 290}(-.02u,-.11u)
         enddef;
         initsymbol("p_u_crustacean");    
+		
+        def l_u_doline (expr P) =
+          T:=identity;
+          laenge:= arclength P;
+          symsize:=adjust_step(laenge,2u);
+          triangle_width:=symsize/10;
+          cur:=(symsize-triangle_width)/2;
+          pickup PenC;
+          forever:
+            t1 := arctime (cur) of P;
+            t  := arctime (cur + triangle_width/2) of P;
+            t2 := arctime (cur + triangle_width) of P;
+              thfill (subpath (t1,t2) of P) -- 
+                ((point t of P) + symsize/2 * unitvector(thdir(P,t) rotated 90)) -- 
+                cycle;
+              thdraw (point t2 of P) -- ((point t of P) + symsize/2 * unitvector(thdir(P,t) rotated 90)) -- 
+                (point t1 of P);
+            cur := cur + symsize;
+            exitif cur > laenge - (1*symsize/3); % for rounding errors
+            t1:=arctime (cur) of P;
+          endfor;
+        enddef;
+        initsymbol("l_u_doline");  
 
     endcode
 
@@ -432,6 +455,7 @@ text ru "line u:rockfall" "обвал"
 text ru "line u:fence" "ограждение"
 text ru "line u:gour_rim" "край гура"
 text ru "line u:slope_sheer" "склон отвесный"
+text ru "line u:doline" "воронка"
 
 text ru "area u:breccia" "брекчия"
 text ru "area u:flowstone" "натёки"

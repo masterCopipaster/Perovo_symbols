@@ -691,6 +691,15 @@ layout symbols_mine
 			fi;
 		enddef;
 		initsymbol("l_u_track");
+		
+		def l_u_user (expr P) =
+			T:=identity;
+			if symbol_complexity_line = 0:
+				pickup PenA
+				thdraw P withcolor blue
+			fi;
+		enddef;
+		initsymbol("l_u_user");
         
         def p_u_block (expr pos,theta,sc,al)=
             U:=(0,0);

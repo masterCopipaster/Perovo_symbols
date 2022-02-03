@@ -266,30 +266,30 @@ layout symbols_mine
 		
 		def a_debris_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.5;
-			scale_factor:= 0.08;
+			symbol_distance:=0.44;     % 0.64 было стабильным и иногда 0.44
+			scale_factor:= 0.07;
 %			expansion:= 5;
 			pickup PenC;
 			path q, qq; q = bbox p;
 			pair outside;
 			outside:= ulcorner q + up;
 			picture tmp_pic;
-			uu := max(u, (xpart urcorner q - xpart llcorner q)/100, (ypart urcorner q - ypart     llcorner q)/100);
+			uu := max(u, (xpart urcorner q - xpart llcorner q)/100,(ypart urcorner q - ypart llcorner q)/100);
 			tmp_pic := image(
 				for i = xpart llcorner q step symbol_distance*uu until xpart urcorner q:
 					for j = ypart llcorner q step symbol_distance*uu until ypart urcorner q:
 						qq := punked (((-.5uu,-.5uu)--(.5uu,-.5uu)--(1.05uu,0.01uu)--(.5uu,.5uu)--(-.5uu,.5uu)--cycle)
 						randomized (uu/2))
-						scaled (uniformdeviate(0.4)+scale_factor )
+						scaled (uniformdeviate(0.4)+scale_factor)
 						rotated uniformdeviate(360)
-						shifted ((i,j) randomized 0.5uu);
+						shifted ((i,j) randomized 0.1uu);
 						if xpart (p intersectiontimes qq) < 0:
 							if pointinside((i,j),p,outside):
 								thclean qq;
 								thdraw qq;
 							fi;
 						else:
-							qq:= qq scaled (uniformdeviate(.2)+.5 )
+							qq:= qq scaled (uniformdeviate(.2)+0.5)
 							if xpart (p intersectiontimes qq) < 0:
 								if pointinside((i,j),p,outside):
 									thclean qq;

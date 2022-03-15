@@ -1,0 +1,64 @@
+<NotepadPlus>
+    <UserLang name="Therion" ext="th th2 thc" udlVersion="2.1">
+        <Settings>
+            <Global caseIgnored="no" allowFoldOfComments="no" foldCompact="no" forcePureLC="0" decimalSeparator="0" />
+            <Prefix Keywords1="no" Keywords2="no" Keywords3="no" Keywords4="no" Keywords5="no" Keywords6="no" Keywords7="no" Keywords8="no" />
+        </Settings>
+        <KeywordLists>
+            <Keywords name="Comments">03 04 00# 01 02</Keywords>
+            <Keywords name="Numbers, prefix1"></Keywords>
+            <Keywords name="Numbers, prefix2"></Keywords>
+            <Keywords name="Numbers, extras1"></Keywords>
+            <Keywords name="Numbers, extras2"></Keywords>
+            <Keywords name="Numbers, suffix1"></Keywords>
+            <Keywords name="Numbers, suffix2"></Keywords>
+            <Keywords name="Numbers, range"></Keywords>
+            <Keywords name="Operators1">. : @ \</Keywords>
+            <Keywords name="Operators2"></Keywords>
+            <Keywords name="Folders in code1, open">area centerline centreline code grade group layout -layout line map revise scrap surface survey</Keywords>
+            <Keywords name="Folders in code1, middle"></Keywords>
+            <Keywords name="Folders in code1, close">endarea endcenterline endcentreline endcode endgrade endgroup endlayout endline endmap endrevise endscrap endsurface endsurvey</Keywords>
+            <Keywords name="Folders in code2, open"></Keywords>
+            <Keywords name="Folders in code2, middle"></Keywords>
+            <Keywords name="Folders in code2, close"></Keywords>
+            <Keywords name="Folders in comment, open"></Keywords>
+            <Keywords name="Folders in comment, middle"></Keywords>
+            <Keywords name="Folders in comment, close"></Keywords>
+            <Keywords name="Keywords1">endsource export import input point preview select source unselect</Keywords>
+            <Keywords name="Keywords2">atlas cave-list continuation-list copy data database cs declination -entrance fix model namespace origin -o -output person-rename -title sd survey-list</Keywords>
+            <Keywords name="Keywords3">altitude -attributes author -author chapter-level context copyright -copyright date disable doc-author doc-keywords doc-subject doc-title elev elevation -enable equipment extend extended equate dimensions fixed flip height -format -fmt join label language layers map-connection map-level metapost natural none painted passage-fills passage-height plan remark rotate section sediments sketch sketches special speleothems statistics station-name subtype -subtype temporary tex-atlas tex-map visibility walls wall-source</Keywords>
+            <Keywords name="Keywords4">3d 3dmf adjust air-draught -align all anastomosis anchor arrow approx approximate aragonite arch archeo-material attr auto backcompass backclino base-scale bearing bedrock begin bitmap blank blocks border both bottom break breakdown-choke bridge calibrate calibration camp cartesian carto cave cave-centerline cave-centreline cave-pearl cave-station ceiling-meander ceiling-step center chimney clay clay-choke clay-tree clip clino -close color colour color-legend colour-legend comment compass conjectual continuation contour counter count create crystal curtain cylpolar dbf debris debug decimal default deg degree degrees depth depthchange direction disk dist distance dig diving doline down duplicate dxf easting epsg EPSG esri esri enc encoding end eol equates exclude-pages explo explo-date explo-team explored explo-length exports extra feet floor-meander -filter first fixed-ladder flag flags floor-step flowstone flowstone-choke flute from fromdepth grads gradient grid grid-coords grid-flip grid-size grid-origin grid-units guano gypsum gypsum-flower -head helictite hide horizontal html ice ice-stalactite ice-stalagmite ice-pillar -id ignore ignoreall imperial in infer instrument intermittent invisible karren keyword kml l labels lang large left legend legend-columns legend-width local -location loch low-end lox l-size mark map-comment map-fg map-bg map-header map-header-bg map-image metres metric m meter meters minus minutes mils moonmilk n ne nw -name names newline nav-factor nav-size no-equipment narrow-end normal north northing nosurvey not notes off omit on opacity orient -orientation origin-label overhang overlap overlying own-pages out page-grid page-numbers page-setup paleo paleo-material passage pdf pebbles percent percentage permanent pictures pillar pit -place plaquette plt plumbs plus popcorn preserve presumed -proj -projection preview-above preview-below r-size raft raft-cone recursive reference -reverse right rimstone-dam rimstone-pool rock-border rock-edge root rope rope-ladder sand scale -scale scale-bar scallop scrap-names sink size slope s se sw second separator small smooth snow soda-straw splay spring sql stalactite stalacmite start station -station-names steps summer surface-centerline surface-centerline surface-opacity -surveys survey-level survex svg symbol-assign symbol-color symbol-hide symbol-set symbol-show length team -text title-pages th thc th2 to todepth top topo topofil topo-length tolower toupper transparency traverse true txt -outline u undefined under-lying unsurveyed units up use value vegetable-debris vertical vrml vthreshold wall -wall wall-altitude wall-calcite water water-flow winter x xl xs xhtml xvi y z dx dy dz yards</Keywords>
+            <Keywords name="Keywords5"></Keywords>
+            <Keywords name="Keywords6"></Keywords>
+            <Keywords name="Keywords7"></Keywords>
+            <Keywords name="Keywords8"></Keywords>
+            <Keywords name="Delimiters">00&quot; 01 02&quot; 03[ 04 05] 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23</Keywords>
+        </KeywordLists>
+        <Styles>
+            <WordsStyle name="DEFAULT" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="COMMENTS" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="LINE COMMENTS" fgColor="5C5C5C" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="NUMBERS" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS1" fgColor="C88CFF" bgColor="141414" fontName="" fontStyle="5" nesting="0" />
+            <WordsStyle name="KEYWORDS2" fgColor="FF0000" bgColor="141414" fontName="" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS3" fgColor="C88CFF" bgColor="141414" fontName="" fontStyle="1" nesting="0" />
+            <WordsStyle name="KEYWORDS4" fgColor="8CC9FF" bgColor="141414" fontName="@Arial Unicode MS" fontStyle="2" nesting="0" />
+            <WordsStyle name="KEYWORDS5" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS6" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS7" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS8" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="OPERATORS" fgColor="FF9696" bgColor="141414" fontName="" fontStyle="1" nesting="0" />
+            <WordsStyle name="FOLDER IN CODE1" fgColor="8CC9FF" bgColor="141414" fontName="" fontStyle="1" nesting="0" />
+            <WordsStyle name="FOLDER IN CODE2" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="FOLDER IN COMMENT" fgColor="FFFFFF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS1" fgColor="8CC9FF" bgColor="141414" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS2" fgColor="FFC891" bgColor="141414" fontName="" fontStyle="7" nesting="0" />
+            <WordsStyle name="DELIMITERS3" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS4" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS5" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS6" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS7" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS8" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+        </Styles>
+    </UserLang>
+</NotepadPlus>

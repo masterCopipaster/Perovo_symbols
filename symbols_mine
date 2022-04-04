@@ -335,7 +335,7 @@ layout symbols_mine
 		
 		def a_blocks_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.6;
+			symbol_distance:=0.8;
 			scale_factor:= 0.4;
 			pickup PenC;
 			path q, qq; q = bbox p;
@@ -786,6 +786,8 @@ layout symbols_mine
   symbol-color area blocks [100 0 0]
   symbol-color area clay [40 13 13] 
   symbol-color point blocks [100 0 0]
+  
+  symbol-hide point label                
 
 endlayout
 

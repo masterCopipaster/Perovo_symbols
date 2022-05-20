@@ -431,6 +431,15 @@ layout symbols_cave
           endfor;
         enddef;
         initsymbol("l_u_doline");  
+		
+        def l_u_sun_wall (expr P) =
+          T:=identity;
+          pickup PenC;
+          thdraw P;
+          pickup PenA;
+          thdraw P dashed evenly scaled optical_zoom;
+        enddef;
+        initsymbol("l_u_sun_wall");  
 
     endcode
 
@@ -451,11 +460,14 @@ text ru "point water-drip" "водокап"
 text ru "point bones" "останки животных"
 text ru "point mudcrack" "глина растрескавшаяся"
 
+text ru "line pit" "колодец/обрыв"
+text ru "line chimney" "карниз"
 text ru "line u:rockfall" "обвал"
 text ru "line u:fence" "ограждение"
 text ru "line u:gour_rim" "край гура"
 text ru "line u:slope_sheer" "склон отвесный"
 text ru "line u:doline" "воронка"
+text ru "line u:sun_wall" "стена дневной поверхности"
 
 text ru "area u:breccia" "брекчия"
 text ru "area u:flowstone" "натёки"

@@ -265,44 +265,28 @@ layout symbols_mine
 		enddef;
 		
 		def a_debris_AUT_complex (expr p) =
-			T:=identity;
-			symbol_distance:=0.44;     % 0.64 было стабильным и иногда 0.44
-			scale_factor:= 0.07;
-%			expansion:= 5;
-			pickup PenC;
-			path q, qq; q = bbox p;
-			pair outside;
-			outside:= ulcorner q + up;
-			picture tmp_pic;
-			uu := max(u, (xpart urcorner q - xpart llcorner q)/100,(ypart urcorner q - ypart llcorner q)/100);
-			tmp_pic := image(
-				for i = xpart llcorner q step symbol_distance*uu until xpart urcorner q:
-					for j = ypart llcorner q step symbol_distance*uu until ypart urcorner q:
-						qq := punked (((-.5uu,-.5uu)--(.5uu,-.5uu)--(1.05uu,0.01uu)--(.5uu,.5uu)--(-.5uu,.5uu)--cycle)
-						randomized (uu/2))
-						scaled (uniformdeviate(0.4)+scale_factor)
-						rotated uniformdeviate(360)
-						shifted ((i,j) randomized 0.1uu);
-						if xpart (p intersectiontimes qq) < 0:
-							if pointinside((i,j),p,outside):
-								thclean qq;
-								thdraw qq;
-							fi;
-						else:
-							qq:= qq scaled (uniformdeviate(.2)+0.5)
-							if xpart (p intersectiontimes qq) < 0:
-								if pointinside((i,j),p,outside):
-									thclean qq;
-									thdraw qq;
-								fi;
-							fi;
-						fi;
-					endfor;
-				endfor;
-			);
-			clip tmp_pic to p;
-			drawoptions();
-			draw tmp_pic;
+		  T:=identity;
+		  pickup PenB;
+		  path q, qq; q = bbox p;
+		  picture tmp_pic;
+		  tmp_pic := image(
+		    for i = xpart llcorner q step 0.3u until xpart urcorner q:
+		      for j = ypart llcorner q step 0.3u until ypart urcorner q:
+				qq := punked (((-.2u,-.2u)--(0.2.u,-.2u)--(0.40u,0.01u)--(0.2u,.2u)--(-.2u,.2u)--cycle)
+				  randomized (u/4))
+				  scaled (uniformdeviate(0.3)+.4)
+				  rotated uniformdeviate(360)
+				  shifted ((i,j) randomized 0.1u);
+			if xpart (p intersectiontimes qq) < 0:
+			  thdraw qq;
+			  thfill qq withcolor (0.98,0.93,0.68);
+			fi;
+			  endfor;
+			endfor;
+		  );
+		  clip tmp_pic to p;
+		  drawoptions();
+		  draw tmp_pic;
 		enddef;
 		
 		beginpattern(debris_patt); 
@@ -335,7 +319,7 @@ layout symbols_mine
 		
 		def a_blocks_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.8;
+			symbol_distance:=0.76;
 			scale_factor:= 0.4;
 			pickup PenC;
 			path q, qq; q = bbox p;
@@ -350,7 +334,7 @@ layout symbols_mine
 						randomized (uu/2))
 						scaled (uniformdeviate(0.7)+scale_factor )
 						rotated uniformdeviate(360)
-						shifted ((i,j) randomized 0.75uu);
+						shifted ((i,j) randomized 0.2uu);
 						if xpart (p intersectiontimes qq) < 0:
 							if pointinside((i,j),p,outside):
 								thclean qq;
@@ -774,7 +758,24 @@ layout symbols_mine
             thdraw p;
         enddef;
 		initsymbol("p_waterdrip_RSS");
-				
+		
+		def l_chimney (expr P) =
+		  T:=identity;
+		  cas := 0;
+		  dlzka := arclength P;
+		  mojkrok:=adjust_step(dlzka, 0.8u);
+		  pickup PenC;
+		  forever:
+		    t1 := arctime (cas + mojkrok*1/5) of P;
+		    t  := arctime (cas + mojkrok/2) of P;
+		    t2 := arctime (cas + mojkrok*4/5) of P;
+		    thdraw (subpath (t1,t2) of P);
+		    mark_ (P,t,-0.2u);
+		    cas := cas + mojkrok;
+		    exitif cas > dlzka - (2*mojkrok/3); % for rounding errors
+		  endfor;
+		enddef;
+		
 	endcode
 
   symbol-set AUT
@@ -803,6 +804,8 @@ text ru "point blocks" "обвал"
 text ru "point archeo-material" "артефакт"
 text ru "point water-drip" "водокап"
 
+text ru "line pit" "уступ/обрыв"
+text ru "line chimney" "карниз"
 text ru "line u:stonework" "опорная кладка"
 text ru "line u:freestonework" "ненагруженная кладка"
 text ru "line u:rockfall" "обвал"

@@ -319,7 +319,7 @@ layout symbols_mine
 		
 		def a_blocks_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.76;
+			symbol_distance:=0.78;
 			scale_factor:= 0.4;
 			pickup PenC;
 			path q, qq; q = bbox p;
@@ -544,7 +544,7 @@ layout symbols_mine
 		enddef;
 		initsymbol("p_u_inscription");
 		
-		def p_archeomaterial (expr pos,theta,sc,al)=
+		def p_archeomaterialarcheomaterial (expr pos,theta,sc,al)=
 			U:=(0,0);
 			T:=identity aligned al rotated theta scaled sc shifted pos;
 			pickup PenB;
@@ -776,6 +776,22 @@ layout symbols_mine
 		  endfor;
 		enddef;
 		
+		def p_u_karst (expr pos,theta,sc,al)=
+            U:=(0,0);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenA;
+            q :=  fullcircle scaled .75u;
+            thdraw q;
+%            pickup PenB;
+			p :=  (-.075u,.368u)--(-.2u,-.32u);
+			thdraw p;
+			p :=  (-.14u,-.005u)--(.257u,.273u);
+			thdraw p;
+			p :=  (-.053u,.056u)--(.205u,-.314u);
+			thdraw p;
+		enddef;
+		initsymbol("p_u_karst");
+		
 	endcode
 
   symbol-set AUT
@@ -788,7 +804,7 @@ layout symbols_mine
   symbol-color area clay [40 13 13] 
   symbol-color point blocks [100 0 0]
   
-  symbol-hide point label                
+  symbol-hide point label        
 
 endlayout
 
@@ -822,4 +838,3 @@ text ru "point u:borehole" "скважина"
 text ru "point u:closeent" "закрытый вход"
 text ru "point u:inscription" "графити"
 text ru "point u:block" "готовая продукция"
-

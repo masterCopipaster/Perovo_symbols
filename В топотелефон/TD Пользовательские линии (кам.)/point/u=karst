@@ -1,0 +1,19 @@
+encoding utf-8
+symbol point
+name karst
+name-ru карст
+th_name u:karst
+group user
+orientation no
+color 0xffcc66
+csurvey 6 6 80
+path
+  addCircle 0 0 6
+  moveTo -3.13  5.12
+  lineTo -1.19 -5.88
+  moveTo -2.25  0.08
+  lineTo  4.11 -4.37
+  moveTo -0.85 -0.89
+  lineTo  3.28  5.02
+endpath
+endsymbol

@@ -319,7 +319,7 @@ layout symbols_mine
 		
 		def a_blocks_AUT_complex (expr p) =
 			T:=identity;
-			symbol_distance:=0.78;
+			symbol_distance:=0.76;
 			scale_factor:= 0.4;
 			pickup PenC;
 			path q, qq; q = bbox p;
@@ -387,6 +387,30 @@ layout symbols_mine
 		enddef;
 		
 		def l_wall_clay_AUT (expr P) =
+			T:=identity;
+			if symbol_complexity_line > 1:
+				pickup PenB
+				thdraw P
+			else:
+				cas := 0;
+				dlzka := arclength P;
+				mojkrok:=adjust_step(dlzka, 0.15u);
+				pickup PenC;
+				forever:
+					t := arctime cas of P;
+					thdraw (origin shifted ((point t of P) + .12u
+						* unitvector(thdir(P,t) rotated -90)));
+					thdraw (origin shifted ((point t of P) - .12u
+						* unitvector(thdir(P,t) rotated -90)));
+					cas := cas + mojkrok;
+					exitif cas > dlzka + (mojkrok / 3); % for rounding errors
+				endfor;
+				pickup PenC;
+				thdraw P;
+			fi;
+		enddef;
+		
+		def l_wall_sand_AUT (expr P) =
 			T:=identity;
 			if symbol_complexity_line > 1:
 				pickup PenB
@@ -775,6 +799,7 @@ layout symbols_mine
 		    exitif cas > dlzka - (2*mojkrok/3); % for rounding errors
 		  endfor;
 		enddef;
+		initsymbol("l_chimney");
 		
 		def p_u_karst (expr pos,theta,sc,al)=
             U:=(0,0);

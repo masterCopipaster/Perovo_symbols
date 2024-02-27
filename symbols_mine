@@ -265,18 +265,20 @@ layout symbols_mine
 		enddef;
 		
 		def a_debris_AUT_complex (expr p) =
+		  sf:=.05u;     % параметр масштабирования
 		  T:=identity;
 		  pickup PenB;
-		  path q, qq; q = bbox p;
+		  path q, qq;
+		  q = bbox p;
 		  picture tmp_pic;
 		  tmp_pic := image(
-		    for i = xpart llcorner q step 0.3u until xpart urcorner q:
-		      for j = ypart llcorner q step 0.3u until ypart urcorner q:
-				qq := punked (((-.2u,-.2u)--(0.2.u,-.2u)--(0.40u,0.01u)--(0.2u,.2u)--(-.2u,.2u)--cycle)
-				  randomized (u/4))
-				  scaled (uniformdeviate(0.3)+.4)
+		    for i = xpart llcorner q step 6sf until xpart urcorner q:
+		      for j = ypart llcorner q step 6sf until ypart urcorner q:
+				qq := punked (((-4sf,-4sf)--(4sf,-4sf)--(8sf,.2sf)--(4sf,4sf)--(-4sf,4sf)--cycle)
+				  randomized (5sf))
+				  scaled (uniformdeviate(0.3)+.4)     % параметры масштабирования
 				  rotated uniformdeviate(360)
-				  shifted ((i,j) randomized 0.1u);
+				  shifted ((i,j) randomized 3sf);
 			if xpart (p intersectiontimes qq) < 0:
 			  thdraw qq;
 			  thfill qq withcolor (0.98,0.93,0.68);
@@ -318,43 +320,30 @@ layout symbols_mine
 		enddef;
 		
 		def a_blocks_AUT_complex (expr p) =
-			T:=identity;
-			symbol_distance:=0.76;
-			scale_factor:= 0.4;
-			pickup PenC;
-			path q, qq; q = bbox p;
-			pair outside;
-			outside:= ulcorner q + up;
-			picture tmp_pic;
-			uu := max(u, (xpart urcorner q - xpart llcorner q)/100, (ypart urcorner q - ypart     llcorner q)/100);
-			tmp_pic := image(
-				for i = xpart llcorner q step symbol_distance*uu until xpart urcorner q:
-					for j = ypart llcorner q step symbol_distance*uu until ypart urcorner q:
-						qq := punked (((-.5uu,-.5uu)--(.5uu,-.5uu)--(1.05uu,0.01uu)--(.5uu,.5uu)--(-.5uu,.5uu)--cycle)
-						randomized (uu/2))
-						scaled (uniformdeviate(0.7)+scale_factor )
-						rotated uniformdeviate(360)
-						shifted ((i,j) randomized 0.2uu);
-						if xpart (p intersectiontimes qq) < 0:
-							if pointinside((i,j),p,outside):
-								thclean qq;
-								thdraw qq;
-							fi;
-						else:
-							qq:= qq scaled (uniformdeviate(.2)+.5 );
-							if xpart (p intersectiontimes qq) < 0:
-								if pointinside((i,j),p,outside):
-									thclean qq;
-									thdraw qq;
-								fi;
-							fi;
-						fi;
-					endfor;
-				endfor;
-			);
-			clip tmp_pic to p;
-			drawoptions();
-			draw tmp_pic;
+		  sf:=.10u;     % параметр масштабирования
+		  T:=identity;
+		  pickup PenA;
+		  path q, qq;
+		  q = bbox p;
+		  picture tmp_pic;
+		  tmp_pic := image(
+		    for i = xpart llcorner q step 8sf until xpart urcorner q:
+		      for j = ypart llcorner q step 8sf until ypart urcorner q:
+				qq := punked (((-4sf,-4sf)--(4sf,-4sf)--(8sf,.2sf)--(4sf,4sf)--(-4sf,4sf)--cycle)
+				  randomized (5sf))
+				  scaled (uniformdeviate(0.6)+.8)     % параметры масштабирования
+				  rotated uniformdeviate(360)
+				  shifted ((i,j) randomized 3sf);
+			if xpart (p intersectiontimes qq) < 0:
+			  thdraw qq;
+			  thfill qq withcolor (0.98,0.93,0.68);
+			fi;
+			  endfor;
+			endfor;
+		  );
+		  clip tmp_pic to p;
+		  drawoptions();
+		  draw tmp_pic;
 		enddef;
 		
 		beginpattern(blocks_patt); 

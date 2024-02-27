@@ -92,7 +92,7 @@ endline
 
 point 176.87 -181.06 entrance
 
-point 269.11 -289.87 water-drip
+point 269.11 -289.87 u:chert_nodul
 
 
 point 196.85 -236.22 station -name "2"

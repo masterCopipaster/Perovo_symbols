@@ -1,7 +1,8 @@
 encoding  utf-8
-input ../../symbols_cave        # Подгружаем файл с пользовательскими линиями и т.п.
+#input ../../symbols_cave        # Подгружаем файл с пользовательскими линиями и т.п.
+input ../../../Mchishta/!components/symbols-th
   
-layout pdf-map  -copy symbols_cave
+layout pdf-map  -copy symbols  #_cave
   scale 1 20 
   legend on
   language ru

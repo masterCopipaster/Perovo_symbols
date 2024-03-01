@@ -1,0 +1,20 @@
+encoding utf-8
+symbol line
+name good_road
+name-ru оптимальный_путь
+th_name u:goodroad
+group trail
+color 0x00ff00 0xff
+width 1
+effect
+  addCircle 0 0 3
+  moveTo -8 1
+  lineTo -3 1
+  lineTo -3 -1
+  lineTo -8 -1
+  moveTo 8 1
+  lineTo 3 1
+  lineTo 3 -1
+  lineTo 8 -1
+endeffect
+endsymbol

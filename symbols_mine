@@ -678,8 +678,8 @@ layout symbols_mine
 					thdraw P withcolor color_l_track;
 					forever:
 						t := arctime (cas + 0.5*shag) of P;
-						q := ((point t of P) + .2u * unitvector(thdir(P,t) rotated 90)) --
-							 ((point t of P) + .2u * unitvector(thdir(P,t) rotated -90));
+						q := ((point t of P) + .25u * unitvector(thdir(P,t) rotated 90)) --
+							 ((point t of P) + .25u * unitvector(thdir(P,t) rotated -90));
 						thdraw q withcolor color_l_track;
 						cas := cas + shag;
 						exitif cas > dlina - (2*shag/3); % for rounding errors
@@ -688,6 +688,67 @@ layout symbols_mine
 			fi;
 		enddef;
 		initsymbol("l_u_track");
+		
+		def color_l_railway = color_l_track enddef;
+		
+		def l_u_railway (expr P) =
+			T:=identity;
+			if symbol_complexity_line = 1:
+				pickup PenC
+				thdraw P withcolor color_l_track
+			fi;
+			if symbol_complexity_line = 0:
+				cas := 0;
+				dlina := arclength P;
+				if dlina > 0:
+					shag:=adjust_step(dlina, u);
+					pickup PenC;
+%					thdraw P withcolor color_l_track;
+					forever:
+					    tt := t;
+						t := arctime (cas + 0.5*shag) of P;
+						q := ((point t of P) + .25u * unitvector(thdir(P,t) rotated 90)) --
+							 ((point t of P) + .25u * unitvector(thdir(P,t) rotated -90));
+						thdraw q withcolor color_l_track;
+						if cas > 0:
+							q := ((point tt of P) + .15u * unitvector(thdir(P,tt) rotated 90)) --
+								((point t of P) + .15u * unitvector(thdir(P,t) rotated 90));
+							thdraw q withcolor color_l_track;
+							q := ((point tt of P) + .15u * unitvector(thdir(P,tt) rotated -90)) --
+								((point t of P) + .15u * unitvector(thdir(P,t) rotated -90));
+							thdraw q withcolor color_l_track;
+						fi;
+						cas := cas + shag;
+						exitif cas > dlina - (2*shag/3); % for rounding errors
+					endfor;
+				fi;
+			fi;
+		enddef;
+		initsymbol("l_u_railway");
+		
+		def l_u_goodroad (expr P) =
+			T:=identity;
+			dlina:= arclength P;
+			symsize:=adjust_step(dlina,0.8u);
+			circle_width:=symsize/2;
+			cur:=(symsize-circle_width)/2;
+			pickup PenC;
+			forever:
+				t1 := arctime (cur) of P;
+				t2 := arctime (cur + circle_width) of P;
+				c1 := arctime (cur - circle_width/2) of P;
+				c2 := arctime (cur + circle_width*1.5) of P;
+				thdraw (point t1 of P){dir (angle(thdir(P,t1)) + 90)} ..
+						{dir (angle(thdir(P,t2)) - 90)}(point t2 of P)..
+						(point t1 of P){dir (angle(thdir(P,t1)) + 90)} withcolor (0,.8,0);
+				thdraw (subpath (c1,t1) of P) withcolor (0,.8,0);
+				cur := cur + symsize;
+				thdraw (subpath (t2,c2) of P) withcolor (0,.8,0);
+				exitif cur > dlina + (symsize / 3); % for rounding errors
+			endfor;
+%			thdraw P withcolor (0,.8,0);
+		enddef;
+		initsymbol("l_u_goodroad");
 		
 		def l_u_user (expr P) =
 			T:=identity;
@@ -806,6 +867,22 @@ layout symbols_mine
 		enddef;
 		initsymbol("p_u_karst");
 		
+		def p_u_belltower (expr pos,theta,sc,al)=
+            U:=(0,0);
+            T:=identity aligned al rotated theta scaled sc shifted pos;
+            pickup PenB;
+			thdraw fullcircle scaled u dashed dashpattern(on 0.98bp off 1.96bp on 0.98bp);
+			thdraw (.5u,0)--(.333u,0);
+			thdraw (0,.5u)--(0,.333u);
+			thdraw (-.5u,0)--(-.333u,0);
+			thdraw (0,-.5u)--(0,-.333u);
+			thdraw (.35u,.35u)--(.24u,.24u);
+			thdraw (-.35u,.35u)--(-.24u,.24u);
+			thdraw (.35u,-.35u)--(.24u,-.24u);
+			thdraw (-.35u,-.35u)--(-.24u,-.24u);
+		enddef;
+		initsymbol("p_u_belltower");
+		
 	endcode
 
   symbol-set AUT
@@ -843,6 +920,8 @@ text ru "line u:gravitywall" "монолит вторичный"
 text ru "line u:woodensupport" "крепь деревянная"
 text ru "line u:woodensleeper" "шпала деревянная"
 text ru "line u:track" "откатной путь"
+text ru "line u:railway" "железная дорога"
+text ru "line u:goodroad" "оптимальный путь"
 text ru "line u:doline" "точильный ров / воронка"
 
 text ru "point u:pollution" "мусор"
@@ -852,3 +931,4 @@ text ru "point u:borehole" "скважина"
 text ru "point u:closeent" "закрытый вход"
 text ru "point u:inscription" "графити"
 text ru "point u:block" "готовая продукция"
+text ru "point u:belltower" "колокольня"

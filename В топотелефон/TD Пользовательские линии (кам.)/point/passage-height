@@ -8,6 +8,7 @@ name-fr hauteur_de_passage
 name-ro înălțime-pasaj
 name-de Ganghöhe
 th_name passage-height
+options -value #
 orientation no
 has_value yes
 color 0xcccccc

@@ -1,7 +1,7 @@
 # Perovo_symbols
 Репозиторий с пользовательскими символами для Therion и TopoDroid, используемые спелеоклубом Перово.
 
-Правильный транслитератор: http://cavedb.ru/translit.html
+Правильный транслитератор: https://cavedb.ru/translit/
 
 symbols_mine - набор символов под каменоломни.
 symbols_cave - набор символов под естественные пещеры.

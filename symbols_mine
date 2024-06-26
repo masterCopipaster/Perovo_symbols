@@ -281,7 +281,7 @@ layout symbols_mine
 				  shifted ((i,j) randomized 3sf);
 			if xpart (p intersectiontimes qq) < 0:
 			  thdraw qq;
-			  thfill qq withcolor (0.98,0.93,0.68);
+			  thclean qq;
 			fi;
 			  endfor;
 			endfor;
@@ -336,7 +336,7 @@ layout symbols_mine
 				  shifted ((i,j) randomized 3sf);
 			if xpart (p intersectiontimes qq) < 0:
 			  thdraw qq;
-			  thfill qq withcolor (0.98,0.93,0.68);
+			  thclean qq;
 			fi;
 			  endfor;
 			endfor;
